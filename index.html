@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Write content description here" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HotView Labs</title>
+    <link rel="stylesheet" href="src/css/styles.css" />
+    <link rel="icon" type="image/png" href="" />
+    <script type="module" src="scripts/blogStaticList.mjs"></script>
+    <script type="module" src="scripts/carousel.mjs"></script>
+    <script
+      src="https://kit.fontawesome.com/2853574374.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header>
+      <nav id="headerNav"></nav>
+      <a href="index.html" class="header-logo"
+        >HotView Labs
+        <i class="fa-solid fa-microchip"></i>
+      </a>
+    </header>
+    <main>
+      <h1 class="news-header">Latest News</h1>
+      <section class="carousel-wrapper">
+        <button class="carousel-button" id="prevButton">&#8249;</button>
+        <button class="carousel-button" id="nextButton">&#8250;</button>
+        <div class="carousel-container" id="carouselContainer"></div>
+      </section>
+      <h2>News Library</h2>
+      <section
+        class="static-blog-post-section loading-indicator"
+        id="blogPostSection"
+      ></section>
+    </main>
+    <footer>
+      <i class="fa-solid fa-microchip"></i>
+      <nav class="footer-nav">
+        <ul class="footer-ul">
+          <li class="footer-li"><a href="account/login.html">Login</a></li>
+          <li class="footer-li">
+            <a href="account/register.html">Register</a>
+          </li>
+        </ul>
+      </nav>
+    </footer>
+  </body>
+</html>

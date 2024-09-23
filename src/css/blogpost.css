@@ -1,0 +1,21 @@
+.blog-post-section {
+  background-color: var(--secondary-accent-color);
+  padding: 1rem;
+}
+.blog-post-img-container {
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+}
+.blog-post-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.blog-post-title {
+  font-family: var(--ff-header);
+  margin: 0.5rem 0;
+}
+.blog-post-paragraph {
+  font-family: var(--ff-paragraph);
+}

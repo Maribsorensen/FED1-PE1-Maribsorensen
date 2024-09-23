@@ -1,0 +1,27 @@
+footer {
+  display: flex;
+  background-color: var(--secondary-bg-color);
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  a {
+    text-decoration: none;
+    color: var(--secondary-accent-color);
+  }
+  .fa-microchip {
+    color: var(--primary-accent-color);
+    font-size: 5rem;
+  }
+  .footer-nav a:hover {
+    color: var(--primary-accent-color);
+  }
+}
+.footer-nav li {
+  display: block;
+  font-family: var(--ff-header);
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
