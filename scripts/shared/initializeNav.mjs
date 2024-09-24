@@ -44,7 +44,7 @@ function createOwnerMenu(username) {
 
 function createUserMenu() {
   const unorderedList = document.createElement("ul");
-  unorderedList.appendChild(createNavItem("Login", `account/login.html`));
+  unorderedList.appendChild(createNavItem("Login", `${ABSOLUTE_PATH}account/login.html`));
   unorderedList.appendChild(createNavItem("Register", `${ABSOLUTE_PATH}account/register.html`));
   return unorderedList;
 };
