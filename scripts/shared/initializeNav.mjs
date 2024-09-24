@@ -1,3 +1,4 @@
+import { ABSOLUTE_PATH } from "./constants.mjs";
 
 
 function createNavItem(text, href = "#", id = "") {
@@ -44,7 +45,7 @@ function createOwnerMenu(username) {
 function createUserMenu() {
   const unorderedList = document.createElement("ul");
   unorderedList.appendChild(createNavItem("Login", `account/login.html`));
-  unorderedList.appendChild(createNavItem("Register", `account/register.html`));
+  unorderedList.appendChild(createNavItem("Register", `${ABSOLUTE_PATH}account/register.html`));
   return unorderedList;
 };
 
