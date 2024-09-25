@@ -50,4 +50,10 @@
   .static-blog-post-section {
     grid-template-columns: repeat(2, 1fr);
   }
+  .static-blog-post-overlay {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+  .static-blog-post-title {
+    opacity: 1;
+  }
 }

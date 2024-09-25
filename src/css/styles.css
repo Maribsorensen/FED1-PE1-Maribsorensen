@@ -19,6 +19,8 @@ body {
   margin: 0;
   width: 100%;
   background-color: var(--primary-bg-color);
+  position: relative;
+  padding-bottom: 12rem;
 }
 main {
   max-width: 1400px;
@@ -33,4 +35,19 @@ main {
   display: inline-block;
   box-sizing: border-box;
   animation: rotation 1s linear infinite;
+}
+.news-header {
+  color: var(--primary-accent-color);
+  font-size: 2rem;
+}
+
+@media (max-width: 1400px) {
+  main {
+    margin: 1rem;
+  }
+}
+@media (max-width: 600px) {
+  .news-header {
+    font-size: 1.5rem;
+  }
 }

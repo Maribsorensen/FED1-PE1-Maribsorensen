@@ -4,6 +4,9 @@ header {
   align-items: center;
   justify-content: space-between;
   padding: 2rem;
+  top: 0;
+  z-index: 1000;
+  position: sticky;
   a {
     text-decoration: none;
     color: var(--secondary-accent-color);
@@ -55,4 +58,20 @@ header {
 }
 .username-menu:hover {
   color: var(--primary-accent-color);
+}
+
+@media (max-width: 600px) {
+  .header-logo {
+    font-size: 1.5rem;
+  }
+
+  header {
+    padding: 0.5rem;
+    nav ul {
+      font-size: 1rem;
+    }
+    .fa-microchip {
+      font-size: 1.5rem;
+    }
+  }
 }
