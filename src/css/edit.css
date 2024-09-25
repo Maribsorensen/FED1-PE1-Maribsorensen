@@ -18,6 +18,9 @@
     border: none;
     padding: 0.5rem;
   }
+  .blog-post-button {
+    width: 20%;
+  }
 }
 .blog-post-button {
   background-color: var(--primary-accent-color);
@@ -29,7 +32,6 @@
   padding: 1rem;
   transition: 0.3s;
   text-transform: uppercase;
-  width: 20%;
 }
 .blog-post-button:hover {
   letter-spacing: 0.1rem;

@@ -51,3 +51,24 @@ main {
     font-size: 1.5rem;
   }
 }
+
+#toaster {
+  visibility: hidden;
+  min-width: 15rem;
+  background-color: var(--primary-bg-color);
+  color: var(--secondary-accent-color);
+  text-align: center;
+  border-radius: 1rem;
+  padding: 1rem;
+  position: fixed;
+  bottom: 15rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+#toaster.show-toaster {
+  visibility: visible;
+  opacity: 1;
+}

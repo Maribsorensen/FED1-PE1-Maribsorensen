@@ -15,7 +15,13 @@
 .blog-post-title {
   font-family: var(--ff-header);
   margin: 0.5rem 0;
+  font-size: 1.5rem;
 }
 .blog-post-paragraph {
   font-family: var(--ff-paragraph);
+  font-size: 1rem;
+}
+.share-post-button {
+  display: block;
+  margin: 1rem auto;
 }

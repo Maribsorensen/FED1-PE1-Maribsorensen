@@ -80,5 +80,20 @@ async function generateBlogPost() {
   }
 }
 
+// Shareable button functionality
+document.getElementById("shareBtn").addEventListener("click", function () {
+  const currentPostUrl = window.location.href;
+
+  navigator.clipboard.writeText(currentPostUrl)
+    .then(() => {
+      const toasterMessage = document.getElementById("toaster");
+      toasterMessage.classList.add("show-toaster");
+
+      setTimeout(function () {
+        toasterMessage.classList.remove("show-toaster");
+      }, 3000);
+    })
+});
+
 generateBlogPost();
 document.addEventListener("DOMContentLoaded", initializeHeaderNav);
