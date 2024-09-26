@@ -38,6 +38,7 @@ main {
 }
 .news-header {
   color: var(--primary-accent-color);
+  font-family: var(--ff-header);
   font-size: 2rem;
 }
 

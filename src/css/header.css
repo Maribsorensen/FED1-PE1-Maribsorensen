@@ -40,8 +40,7 @@ header {
 }
 
 .header-logo {
-  font-family: var(--ff-header);
-  font-style: italic;
+  font-family: var(--ff-logo);
   font-size: 3rem;
 }
 
