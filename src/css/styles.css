@@ -6,6 +6,7 @@
 @import url(edit.css);
 @import url(staticblog.css);
 @import url(carousel.css);
+@import url(manage.css);
 
 *,
 *:before,
@@ -38,21 +39,26 @@ main {
 }
 .news-header {
   color: var(--primary-accent-color);
-  font-family: var(--ff-header);
   font-size: 2rem;
+  font-weight: 600;
 }
-
-@media (max-width: 1400px) {
-  main {
-    margin: 1rem;
-  }
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+label,
+input,
+button {
+  font-family: var(--ff-main);
 }
-@media (max-width: 600px) {
-  .news-header {
-    font-size: 1.5rem;
-  }
+.center {
+  display: block;
+  margin: 1rem auto;
 }
-
 #toaster {
   visibility: hidden;
   min-width: 15rem;
@@ -72,4 +78,15 @@ main {
 #toaster.show-toaster {
   visibility: visible;
   opacity: 1;
+}
+
+@media (max-width: 1400px) {
+  main {
+    margin: 1rem;
+  }
+}
+@media (max-width: 600px) {
+  .news-header {
+    font-size: 1.5rem;
+  }
 }

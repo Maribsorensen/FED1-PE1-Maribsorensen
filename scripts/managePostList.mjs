@@ -43,6 +43,7 @@ function createBlogPostList(blogPost) {
 
   const deletePostButton = document.createElement("button");
   deletePostButton.textContent = "Delete";
+  deletePostButton.classList.add("delete-button");
 
   deletePostButton.addEventListener('click', () => {
     deleteBlogPost(blogPost.id);

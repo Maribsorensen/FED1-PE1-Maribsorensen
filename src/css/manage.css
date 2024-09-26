@@ -1,0 +1,40 @@
+.delete-button {
+  background-color: var(--primary-accent-color);
+  color: var(--secondary-accent-color);
+  border: none;
+  font-size: 1rem;
+  border-radius: 0.9rem;
+  padding: 0.5rem;
+  transition: 0.3s;
+  text-transform: uppercase;
+  margin: 1rem;
+}
+.delete-button:hover {
+  letter-spacing: 0.1rem;
+  color: var(--primary-accent-color);
+  background-color: var(--secondary-accent-color);
+}
+.manage-post-li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid var(--secondary-accent-color);
+  font-size: 1.3rem;
+}
+.manage-post-a {
+  flex-grow: 1;
+  text-decoration: none;
+  color: var(--secondary-accent-color);
+}
+.manage-post-ul {
+  padding: 0;
+}
+.manage-blog-post-title {
+  color: var(--primary-accent-color);
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+.new-post-a {
+  text-decoration: none;
+}

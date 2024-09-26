@@ -1,12 +1,10 @@
 .edit-header {
-  font-family: var(--ff-header);
   color: var(--primary-accent-color);
 }
 .blog-post-form {
   display: grid;
 
   color: var(--secondary-accent-color);
-  font-family: var(--ff-header);
   label {
     margin-bottom: 0.2rem;
     text-transform: uppercase;
@@ -26,7 +24,6 @@
   background-color: var(--primary-accent-color);
   color: var(--secondary-accent-color);
   border: none;
-  font-family: var(--ff-header);
   font-size: 1.2rem;
   border-radius: 1.2rem;
   padding: 1rem;
