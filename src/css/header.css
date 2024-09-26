@@ -28,7 +28,7 @@ header {
     font-family: var(--ff-header);
   }
   nav ul li {
-    margin-right: 1.5rem;
+    margin-right: 1rem;
     position: relative;
   }
   .hidden {
@@ -62,16 +62,16 @@ header {
 
 @media (max-width: 600px) {
   .header-logo {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
   }
 
   header {
     padding: 0.5rem;
     nav ul {
-      font-size: 1rem;
+      font-size: 1.2rem;
     }
     .fa-microchip {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
     }
   }
 }
