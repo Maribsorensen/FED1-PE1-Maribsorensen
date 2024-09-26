@@ -24,7 +24,9 @@ document.addEventListener("DOMContentLoaded", async () => {
           document.getElementById("title").value = blogPostData.title || "";
           document.getElementById("body").value = blogPostData.body || "";
           const imageUrl = blogPostData.media && blogPostData.media.url ? blogPostData.media.url : "";
+          const imageAlt = blogPostData.media.alt || "";
           document.getElementById("img").value = imageUrl;
+          document.getElementById("altText").value = imageAlt;
         } else {
           console.error("Blog post with the specified ID not found");
         }
@@ -45,12 +47,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     const updatedTitle = document.getElementById("title").value;
     const updatedBody = document.getElementById("body").value;
     const updatedImgUrl = document.getElementById("img").value;
+    const updatedAltText = document.getElementById("altText").value;
 
     const updatedBlogPost = {
       title: updatedTitle,
       body: updatedBody,
       media: {
         url: updatedImgUrl,
+        alt: updatedAltText,
       }
     };
 

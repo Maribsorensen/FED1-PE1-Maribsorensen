@@ -47,9 +47,11 @@ function createBlogPostHtml(blogPost) {
   blogPostImageContainer.className = "blog-post-img-container";
 
   const imageUrl = blogPost.media.url;
+  const imgAlt = blogPost.media.alt;
   const blogPostImage = document.createElement("img");
   blogPostImage.className = "blog-post-img";
   blogPostImage.src = imageUrl;
+  blogPostImage.alt = imgAlt;
 
   const blogPostArticle = document.createElement("article");
   blogPostArticle.className = "blog-post-article";

@@ -25,8 +25,10 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       const imageUrl = post.media.url;
+      const imgAlt = post.media.alt;
       const img = document.createElement("img");
       img.src = imageUrl;
+      img.alt = imgAlt;
 
       const title = document.createElement("div");
       title.classList.add("slide-title");

@@ -7,13 +7,14 @@ document.getElementById("blogPostForm").addEventListener("submit", async functio
   const title = document.getElementById('title').value;
   const body = document.getElementById('body').value;
   const img = document.getElementById('img').value;
+  const altText = document.getElementById('altText').value;
 
   const postBlogData = {
     title,
     body,
     media: {
       url: img,
-      // alt: altText,
+      alt: altText,
     }
   };
   const accessToken = localStorage.getItem('accessToken');

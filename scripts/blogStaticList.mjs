@@ -31,11 +31,11 @@ function createBlogPostCard(blogPost) {
   staticBlogPostContainer.className = "static-blog-post-container";
 
   const imageUrl = blogPost.media.url;
-  // const imageAltText = blogPost.media.alt;
+  const imageAlt = blogPost.media.alt;
   const staticBlogPostImg = document.createElement("img");
   staticBlogPostImg.className = "static-blog-post-img";
   staticBlogPostImg.src = imageUrl;
-  // staticBlogPostImg.alt = imageAltText;
+  staticBlogPostImg.alt = imageAlt;
 
   const staticBlogPostOverlay = document.createElement("div");
   staticBlogPostOverlay.className = "static-blog-post-overlay";
