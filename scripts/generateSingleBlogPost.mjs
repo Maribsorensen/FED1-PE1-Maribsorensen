@@ -6,6 +6,7 @@ function getBlogPostId() {
   return urlParams.get("id");
 }
 
+
 async function fetchBlogPostInformation() {
   const blogPostId = getBlogPostId();
   if (!blogPostId) {
@@ -38,6 +39,7 @@ async function fetchBlogPostInformation() {
   }
 }
 
+// Function for dynamically creating html elements
 function createBlogPostHtml(blogPost) {
   if (!blogPost) return;
 
@@ -70,9 +72,18 @@ function createBlogPostHtml(blogPost) {
   return blogPostContainer;
 }
 
+// Function for changing the meta head title based on post title
+function updatePageTitle(blogPostTitle) {
+  if (blogPostTitle) {
+    document.title = blogPostTitle;
+  }
+}
+
 async function generateBlogPost() {
   const blogPost = await fetchBlogPostInformation();
   if (!blogPost) return;
+
+  updatePageTitle(blogPost.title);
 
   const blogPostElement = createBlogPostHtml(blogPost);
   if (blogPostElement) {

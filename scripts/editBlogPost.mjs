@@ -1,3 +1,4 @@
+import { initializeHeaderNav } from "./shared/initializeNav.mjs";
 import { fetchBlogPost } from "./shared/utils/fetchBlogPost.mjs";
 import { updateBlogPost } from "./shared/utils/updateBlogPost.mjs";
 
@@ -69,3 +70,5 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   });
 });
+
+document.addEventListener("DOMContentLoaded", initializeHeaderNav);

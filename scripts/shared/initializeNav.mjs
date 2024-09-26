@@ -15,7 +15,7 @@ function createHamburgerMenu() {
   const unorderedList = document.createElement("ul");
   unorderedList.className = "hamburger-menu";
 
-  const manager = createNavItem("Manage posts", "../post/manage.html");
+  const manager = createNavItem("Manage posts", "/post/manage.html");
   const logout = createNavItem("Logout", "#", "logout");
 
   unorderedList.append(manager, logout);
