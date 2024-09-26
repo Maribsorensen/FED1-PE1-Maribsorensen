@@ -1,4 +1,4 @@
-import { ABSOLUTE_URL_PATH } from "./constants.mjs";
+// import { ABSOLUTE_URL_PATH } from "./constants.mjs";
 
 
 function createNavItem(text, href = "#", id = "") {
@@ -15,7 +15,7 @@ function createHamburgerMenu() {
   const unorderedList = document.createElement("ul");
   unorderedList.className = "hamburger-menu";
 
-  const manager = createNavItem("Manage posts", "/post/manage.html");
+  const manager = createNavItem("Manage posts", "../post/manage.html");
   const logout = createNavItem("Logout", "#", "logout");
 
   unorderedList.append(manager, logout);
@@ -44,8 +44,8 @@ function createOwnerMenu(username) {
 
 function createUserMenu() {
   const unorderedList = document.createElement("ul");
-  unorderedList.appendChild(createNavItem("Login", `${ABSOLUTE_URL_PATH}account/login.html`));
-  unorderedList.appendChild(createNavItem("Register", `${ABSOLUTE_URL_PATH}account/register.html`));
+  unorderedList.appendChild(createNavItem("Login", `../account/login.html`));
+  unorderedList.appendChild(createNavItem("Register", `../account/register.html`));
   return unorderedList;
 };
 
