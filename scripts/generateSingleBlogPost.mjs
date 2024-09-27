@@ -1,4 +1,5 @@
 import { initializeHeaderNav } from "./shared/initializeNav.mjs";
+import { showModal } from "./shared/modal.mjs";
 import { fetchBlogPost } from "./shared/utils/fetchBlogPost.mjs";
 
 function getBlogPostId() {
@@ -6,16 +7,14 @@ function getBlogPostId() {
   return urlParams.get("id");
 }
 
-
 async function fetchBlogPostInformation() {
   const blogPostId = getBlogPostId();
   if (!blogPostId) {
-    console.error("No blog post ID found in the URL.");
+    showModal("No blog post ID found in the URL.");
     return null;
   }
   try {
     const blogPosts = await fetchBlogPost();
-
     const blogPostArray = blogPosts.data;
 
     if (!Array.isArray(blogPostArray)) {
@@ -23,35 +22,32 @@ async function fetchBlogPostInformation() {
     }
 
     const specificBlogPost = blogPostArray.find(blogPost => blogPost.id === blogPostId);
-
     if (!specificBlogPost) {
       throw new Error("Blog post not found for the provided ID.");
     }
 
     return specificBlogPost;
   } catch (error) {
-    console.error("Error with fetching blog post information:", error);
-    const errorMessageElement = document.createElement("p");
-    errorMessageElement.textContent = "Something went wrong, please try again later";
-    errorMessageElement.className = "error-msg";
-    document.querySelector("main").appendChild(errorMessageElement);
+    showModal("Something went wrong, please try again later");
     return null;
   }
 }
 
-// Function for dynamically creating html elements
 function createBlogPostHtml(blogPost) {
   if (!blogPost) return;
+
+  const blogPostContainer = document.createElement("div");
+  blogPostContainer.className = "blog-post-container";
 
   const blogPostImageContainer = document.createElement("div");
   blogPostImageContainer.className = "blog-post-img-container";
 
-  const imageUrl = blogPost.media.url;
-  const imgAlt = blogPost.media.alt;
   const blogPostImage = document.createElement("img");
   blogPostImage.className = "blog-post-img";
-  blogPostImage.src = imageUrl;
-  blogPostImage.alt = imgAlt;
+  blogPostImage.src = blogPost.media.url;
+  blogPostImage.alt = blogPost.media.alt;
+
+  blogPostImageContainer.appendChild(blogPostImage);
 
   const blogPostArticle = document.createElement("article");
   blogPostArticle.className = "blog-post-article";
@@ -64,17 +60,22 @@ function createBlogPostHtml(blogPost) {
   blogPostParagraph.className = "blog-post-paragraph";
   blogPostParagraph.textContent = blogPost.body;
 
-  blogPostImageContainer.appendChild(blogPostImage);
   blogPostArticle.append(blogPostTitle, blogPostParagraph);
 
-  const blogPostContainer = document.createElement("div");
-  blogPostContainer.className = "blog-post-container";
+  const authorName = document.createElement("p");
+  authorName.className = "author-name";
+  authorName.textContent = `Author: ${blogPost.author.name}`;
+
+  const publicationDate = document.createElement("p");
+  publicationDate.className = "publication-date";
+  publicationDate.textContent = `Published on: ${new Date(blogPost.created).toLocaleDateString()}`;
+
+  blogPostArticle.append(authorName, publicationDate);
   blogPostContainer.append(blogPostImageContainer, blogPostArticle);
 
   return blogPostContainer;
 }
 
-// Function for changing the meta head title based on post title
 function updatePageTitle(blogPostTitle) {
   if (blogPostTitle) {
     document.title = blogPostTitle;
@@ -86,14 +87,12 @@ async function generateBlogPost() {
   if (!blogPost) return;
 
   updatePageTitle(blogPost.title);
-
   const blogPostElement = createBlogPostHtml(blogPost);
   if (blogPostElement) {
     document.querySelector(".blog-post-section").appendChild(blogPostElement);
   }
 }
 
-// Shareable button functionality
 document.getElementById("shareBtn").addEventListener("click", function () {
   const currentPostUrl = window.location.href;
 
@@ -105,8 +104,10 @@ document.getElementById("shareBtn").addEventListener("click", function () {
       setTimeout(function () {
         toasterMessage.classList.remove("show-toaster");
       }, 3000);
-    })
+    });
 });
 
 generateBlogPost();
 document.addEventListener("DOMContentLoaded", initializeHeaderNav);
+
+

@@ -1,12 +1,12 @@
 import { initializeHeaderNav } from "./shared/initializeNav.mjs";
 import { fetchBlogPost } from "./shared/utils/fetchBlogPost.mjs";
 import { updateBlogPost } from "./shared/utils/updateBlogPost.mjs";
+import { showModal } from "./shared/modal.mjs"
 
 function getBlogPostId() {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get("id");
 }
-
 
 document.addEventListener("DOMContentLoaded", async () => {
   const blogPostId = getBlogPostId();
@@ -18,8 +18,6 @@ document.addEventListener("DOMContentLoaded", async () => {
       if (response && Array.isArray(response.data)) {
         const blogPostData = response.data.find((post) => post.id === blogPostId);
 
-        console.log("Filtered blog post data:", blogPostData);
-
         if (blogPostData) {
           document.getElementById("title").value = blogPostData.title || "";
           document.getElementById("body").value = blogPostData.body || "";
@@ -28,16 +26,16 @@ document.addEventListener("DOMContentLoaded", async () => {
           document.getElementById("img").value = imageUrl;
           document.getElementById("altText").value = imageAlt;
         } else {
-          console.error("Blog post with the specified ID not found");
+          showModal("Blog post with the specified ID not found.");
         }
       } else {
-        console.error("Failed to fetch blog posts or invalid data format");
+        showModal("Failed to fetch blog posts or invalid data format.");
       }
     } catch (error) {
-      console.error("Error fetching the blog post:", error);
+      showModal("Error fetching the blog post. Please try again.");
     }
   } else {
-    console.error("No blog post ID found in the URL");
+    showModal("No blog post ID found in the URL.");
   }
 
   const blogPostForm = document.getElementById("blogPostForm");
@@ -61,16 +59,14 @@ document.addEventListener("DOMContentLoaded", async () => {
     try {
       const result = await updateBlogPost(blogPostId, updatedBlogPost);
 
-      console.log("Update result:", result);
-
       if (result && result.data) {
         alert("Blog post updated successfully");
         window.location.href = "manage.html";
       } else {
-        console.error("Error updating the blog post:", result ? result.error : "Unknown error");
+        showModal("Error updating the blog post: " + (result ? result.error : "Unknown error"));
       }
     } catch (error) {
-      console.error("Error updating the blog post:", error);
+      showModal("Error updating the blog post. Please try again.");
     }
   });
 });

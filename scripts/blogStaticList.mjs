@@ -1,4 +1,5 @@
 import { initializeHeaderNav } from "./shared/initializeNav.mjs";
+import { showModal } from "./shared/modal.mjs";
 import { fetchBlogPost } from "./shared/utils/fetchBlogPost.mjs";
 
 let blogPosts = [];
@@ -12,14 +13,12 @@ export async function displayBlogPost() {
     blogPosts = blogData.data;
     renderSortedPosts();
   } else {
-    console.error("Invalid data format received or no data:", blogData);
+    showModal("Invalid data format received or no data.");
   }
 }
 
-// Function to sort posts
 function renderSortedPosts() {
   const sortOrder = document.getElementById("sortOrder").value;
-
   let sortedPosts = [];
 
   if (sortOrder === "newest") {
@@ -37,7 +36,6 @@ function renderSortedPosts() {
   updatePaginationControls(sortedPosts.length);
 }
 
-// Generate the HTML for each post
 function generateBlogPost(blogPostData) {
   const blogPostContainer = document.getElementById("blogPostSection");
   blogPostContainer.textContent = "";
@@ -48,7 +46,6 @@ function generateBlogPost(blogPostData) {
   });
 }
 
-// Create the HTML structure for each post card
 function createBlogPostCard(blogPost) {
   const blogPostCard = document.createElement("a");
   blogPostCard.href = `post/index.html?id=${blogPost.id}`;
@@ -56,12 +53,10 @@ function createBlogPostCard(blogPost) {
   const staticBlogPostContainer = document.createElement("div");
   staticBlogPostContainer.className = "static-blog-post-container";
 
-  const imageUrl = blogPost.media.url;
-  const imageAlt = blogPost.media.alt;
   const staticBlogPostImg = document.createElement("img");
   staticBlogPostImg.className = "static-blog-post-img";
-  staticBlogPostImg.src = imageUrl;
-  staticBlogPostImg.alt = imageAlt;
+  staticBlogPostImg.src = blogPost.media.url;
+  staticBlogPostImg.alt = blogPost.media.alt;
 
   const staticBlogPostOverlay = document.createElement("div");
   staticBlogPostOverlay.className = "static-blog-post-overlay";
@@ -76,7 +71,6 @@ function createBlogPostCard(blogPost) {
   return blogPostCard;
 }
 
-// Pagination for the total number of posts
 function updatePaginationControls(totalPosts) {
   const paginationContainer = document.getElementById("pagination");
   paginationContainer.textContent = "";
@@ -114,3 +108,4 @@ document.getElementById("sortOrder").addEventListener("change", () => {
 
 displayBlogPost();
 document.addEventListener("DOMContentLoaded", initializeHeaderNav);
+

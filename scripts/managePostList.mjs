@@ -1,8 +1,7 @@
-
 import { initializeHeaderNav } from "./shared/initializeNav.mjs";
+import { showModal } from "./shared/modal.mjs";
 import { deleteBlogPost } from "./shared/utils/deleteBlogPost.mjs";
 import { fetchBlogPost } from "./shared/utils/fetchBlogPost.mjs";
-
 
 export async function displayBlogPost() {
   const blogData = await fetchBlogPost();
@@ -10,7 +9,7 @@ export async function displayBlogPost() {
   if (blogData && Array.isArray(blogData.data)) {
     generateBlogPostList(blogData.data);
   } else {
-    console.error("Invalid data format received or no data:", blogData);
+    showModal("Invalid data format received or no data.");
   }
 }
 
@@ -31,7 +30,6 @@ function createBlogPostList(blogPost) {
   const blogPostLi = document.createElement("li");
   blogPostLi.className = "manage-post-li";
 
-
   const blogPostAnchor = document.createElement("a");
   blogPostAnchor.className = "manage-post-a";
   blogPostAnchor.textContent = blogPost.title;
@@ -45,8 +43,14 @@ function createBlogPostList(blogPost) {
   deletePostButton.textContent = "Delete";
   deletePostButton.classList.add("delete-button");
 
-  deletePostButton.addEventListener('click', () => {
-    deleteBlogPost(blogPost.id);
+  deletePostButton.addEventListener('click', async () => {
+    try {
+      await deleteBlogPost(blogPost.id);
+      showModal("Blog post deleted successfully.");
+      displayBlogPost(); // Refresh the list after deletion
+    } catch (error) {
+      showModal("Error deleting the blog post. Please try again.");
+    }
   });
 
   blogPostLi.append(blogPostAnchor, deletePostButton);
@@ -56,3 +60,4 @@ function createBlogPostList(blogPost) {
 
 displayBlogPost();
 document.addEventListener("DOMContentLoaded", initializeHeaderNav);
+

@@ -32,15 +32,13 @@ document.getElementById("blogPostForm").addEventListener("submit", async functio
     if (response.ok) {
       const result = await response.json();
       alert('Blog post created');
-      console.log(result);
     } else {
       const errorData = await response.json();
       alert('Failed to create: ' + errorData.message);
-      console.error(errorData);
     }
   } catch (error) {
     alert('Error: ' + error.message);
-    console.error('Error: ', error);
   }
 });
+
 document.addEventListener("DOMContentLoaded", initializeHeaderNav);
