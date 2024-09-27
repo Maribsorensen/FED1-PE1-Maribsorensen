@@ -98,16 +98,12 @@ document.getElementById("shareBtn").addEventListener("click", function () {
 
   navigator.clipboard.writeText(currentPostUrl)
     .then(() => {
-      const toasterMessage = document.getElementById("toaster");
-      toasterMessage.classList.add("show-toaster");
-
-      setTimeout(function () {
-        toasterMessage.classList.remove("show-toaster");
-      }, 3000);
+      showModal("Blog post link copied to clipboard!");
+    })
+    .catch(() => {
+      showModal("Failed to copy link. Please try again.");
     });
 });
 
 generateBlogPost();
 document.addEventListener("DOMContentLoaded", initializeHeaderNav);
-
-
