@@ -1,6 +1,6 @@
 # HotView Labs
 
-HotView Labs is a student exam project designed to provide up-to-date insights to tech leaders across the world. It is a **news article/blogging website** with an admin panel for managing posts and a user view for reading the latest tech news.
+HotView Labs is a student exam project, created by me Mari, designed to provide up-to-date insights to tech leaders across the world. It is a **news article/blogging website** with an admin panel for managing posts and a user view for reading the latest tech news.
 
 ## Table of Contents
 
@@ -12,8 +12,6 @@ HotView Labs is a student exam project designed to provide up-to-date insights t
 - [Inspiration & References](#inspiration--references)
 - [Testing](#testing)
 - [Live Demo](#live-demo)
-- [Known Issues](#known-issues)
-- [Future Plans](#future-plans)
 
 ## Project Overview
 
@@ -78,17 +76,9 @@ The following tools were used to test the website:
 
 - **WAVE**: Accessibility testing.
 - **Google Lighthouse**: Performance and SEO testing.
-- **W3C Markup Validation Service**: Ensuring the HTML is valid (see results [here](https://validator.w3.org/)).
+- **W3C Markup Validation Service**: Ensuring the HTML is valid
 
 ## Live Demo
 
 The website is live and hosted on GitHub Pages. You can access it here:  
 **[HotView Labs](https://maribsorensen.github.io/FED1-PE1-Maribsorensen/)**
-
-## Known Issues
-
-There are no known issues or bugs at this time.
-
-## Future Plans
-
-This project has been completed and delivered as part of a final exam. No further updates or features are planned.
