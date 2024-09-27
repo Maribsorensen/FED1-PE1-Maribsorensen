@@ -56,15 +56,11 @@ function createBlogPostHtml(blogPost) {
   blogPostTitle.className = "blog-post-title";
   blogPostTitle.textContent = blogPost.title;
 
-  const bodyParagraphs = blogPost.body.split('\n');
-  bodyParagraphs.forEach(paragraph => {
-    if (paragraph.trim()) {
-      const paragraphElement = document.createElement("p");
-      paragraphElement.className = "blog-post-paragraph";
-      paragraphElement.textContent = paragraph;
-      blogPostArticle.appendChild(paragraphElement);
-    }
-  });
+  const blogPostParagraph = document.createElement("p");
+  blogPostParagraph.className = "blog-post-paragraph";
+  blogPostParagraph.textContent = blogPost.body;
+
+  blogPostArticle.append(blogPostTitle, blogPostParagraph);
 
   const authorName = document.createElement("p");
   authorName.className = "author-name";
