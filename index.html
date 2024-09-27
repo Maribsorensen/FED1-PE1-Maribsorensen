@@ -33,10 +33,17 @@
         <div class="carousel-container" id="carouselContainer"></div>
       </section>
       <h2 class="news-header">News Library</h2>
+      <h3 class="sorting-header">Sort posts</h3>
+      <select id="sortOrder" class="sorting-dropdown">
+        <option value="newest">Newest to Oldest</option>
+        <option value="oldest">Oldest to Newest</option>
+        <option value="alphabetical">Alphabetical (A-Z)</option>
+      </select>
       <section
         class="static-blog-post-section loading-indicator"
         id="blogPostSection"
       ></section>
+      <div id="pagination"></div>
     </main>
     <footer>
       <i class="fa-solid fa-microchip"></i>
