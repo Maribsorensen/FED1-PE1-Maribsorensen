@@ -34,7 +34,7 @@
 .login-button,
 .register-button {
   background-color: var(--primary-accent-color);
-  color: var(--secondary-accent-color);
+  color: var(--primary-bg-color);
   border: none;
   font-size: 1.2rem;
   border-radius: 1.2rem;
@@ -45,7 +45,6 @@
 .login-button:hover,
 .register-button:hover {
   letter-spacing: 0.1rem;
-  color: var(--primary-accent-color);
   background-color: var(--secondary-accent-color);
 }
 @media (max-width: 750px) {

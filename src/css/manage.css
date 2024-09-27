@@ -1,6 +1,6 @@
 .delete-button {
   background-color: var(--primary-accent-color);
-  color: var(--secondary-accent-color);
+  color: var(--primary-bg-color);
   border: none;
   font-size: 1rem;
   border-radius: 0.9rem;
@@ -11,7 +11,6 @@
 }
 .delete-button:hover {
   letter-spacing: 0.1rem;
-  color: var(--primary-accent-color);
   background-color: var(--secondary-accent-color);
 }
 .manage-post-li {

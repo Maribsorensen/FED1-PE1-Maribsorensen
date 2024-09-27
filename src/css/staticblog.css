@@ -54,7 +54,7 @@
 
 .sorting-dropdown {
   margin: 1rem 0;
-  color: var(--secondary-accent-color);
+  color: var(--primary-bg-color);
   background-color: var(--primary-accent-color);
   font-size: 1rem;
   padding: 0.3rem;
@@ -67,7 +67,7 @@
   text-align: center;
   font-size: 1rem;
   button {
-    color: var(--secondary-accent-color);
+    color: var(--primary-bg-color);
     background-color: var(--primary-accent-color);
     border: none;
     border-radius: 0.5rem;
