@@ -7,12 +7,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   let currentIndex = 0;
 
-  const selectedPostIds = [
-    "c8144c4a-a23f-44eb-a208-283d5db15576",
-    "cbd0e013-5403-4de2-9817-8140d9d60b3b",
-    "fdd66db0-73b0-44d4-b96a-dcc2f45bf559",
-  ];
-
   function createCarouselSlides(posts) {
     carouselContainer.innerHTML = "";
 
@@ -54,11 +48,10 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    const selectedPosts = postsArray.filter((post) =>
-      selectedPostIds.includes(post.id)
-    );
+    const sortedPosts = postsArray.sort((a, b) => new Date(b.created) - new Date(a.created));
+    const newestPosts = sortedPosts.slice(0, 3);
 
-    createCarouselSlides(selectedPosts);
+    createCarouselSlides(newestPosts);
   }
 
   initCarousel();
