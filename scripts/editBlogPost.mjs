@@ -1,7 +1,7 @@
 import { initializeHeaderNav } from "./shared/initializeNav.mjs";
 import { fetchBlogPost } from "./shared/utils/fetchBlogPost.mjs";
 import { updateBlogPost } from "./shared/utils/updateBlogPost.mjs";
-import { showModal } from "./shared/modal.mjs"
+import { showModal } from "./shared/modal.mjs";
 
 function getBlogPostId() {
   const urlParams = new URLSearchParams(window.location.search);
@@ -60,8 +60,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       const result = await updateBlogPost(blogPostId, updatedBlogPost);
 
       if (result && result.data) {
-        alert("Blog post updated successfully");
-        window.location.href = "manage.html";
+        showModal("Blog post updated successfully! Redirecting...");
+        setTimeout(() => {
+          window.location.href = "manage.html";
+        }, 3000);
       } else {
         showModal("Error updating the blog post: " + (result ? result.error : "Unknown error"));
       }

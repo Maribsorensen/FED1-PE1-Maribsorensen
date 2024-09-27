@@ -1,6 +1,5 @@
 import { BLOG_ENDPOINT } from "../constants.mjs";
 
-
 export async function deleteBlogPost(postId) {
   try {
     const url = `${BLOG_ENDPOINT}/${postId}`;
@@ -14,13 +13,13 @@ export async function deleteBlogPost(postId) {
     });
 
     if (response.ok) {
-      console.log(`Post with ID ${postId} has been successfully deleted.`);
       const postElement = document.querySelector(`a[data-id='${postId}']`);
       postElement.closest("li").remove();
+      return true;
     } else {
-      console.error(`Failed to delete post with ID ${postId}. Status: ${response.status}`);
+      return false;
     }
   } catch (error) {
-    console.error('Error occurred while deleting the post:', error);
+    return false;
   }
-};
+}

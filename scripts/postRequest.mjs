@@ -1,5 +1,6 @@
 import { BLOG_ENDPOINT } from "./shared/constants.mjs";
 import { initializeHeaderNav } from "./shared/initializeNav.mjs";
+import { showModal } from "./shared/modal.mjs";
 
 document.getElementById("blogPostForm").addEventListener("submit", async function (event) {
   event.preventDefault();
@@ -31,13 +32,16 @@ document.getElementById("blogPostForm").addEventListener("submit", async functio
 
     if (response.ok) {
       const result = await response.json();
-      alert('Blog post created');
+      showModal('Blog post created successfully! Redirecting...');
+      setTimeout(() => {
+        window.location.href = "manage.html";
+      }, 3000);
     } else {
       const errorData = await response.json();
-      alert('Failed to create: ' + errorData.message);
+      showModal('Failed to create: ' + errorData.message);
     }
   } catch (error) {
-    alert('Error: ' + error.message);
+    showModal('Error: ' + error.message);
   }
 });
 

@@ -40,14 +40,10 @@ async function loginUser() {
       window.location.href = "../post/manage.html";
     } else {
       showModal("Login failed: " + (json.message || "Unknown error"));
-      alert("Login failed. Please check your credentials.");
     }
-
-    return json;
   } catch (error) {
     showModal("An error occurred while trying to log in.");
   }
-};
+}
 
 document.addEventListener("DOMContentLoaded", initializeHeaderNav);
-

@@ -1,5 +1,5 @@
 import { initializeHeaderNav } from "./shared/initializeNav.mjs";
-import { showModal } from "./shared/modal.mjs";
+import { showModal, showConfirmationModal } from "./shared/modal.mjs"; // Make sure to import both modal functions
 import { fetchBlogPost } from "./shared/utils/fetchBlogPost.mjs";
 
 let blogPosts = [];
@@ -7,13 +7,18 @@ let currentPage = 1;
 const postsPerPage = 12;
 
 export async function displayBlogPost() {
-  const blogData = await fetchBlogPost();
+  try {
+    const blogData = await fetchBlogPost();
 
-  if (blogData && Array.isArray(blogData.data)) {
+    if (!blogData || !Array.isArray(blogData.data)) {
+      showModal("Invalid data format received or no data.");
+      return;
+    }
+
     blogPosts = blogData.data;
     renderSortedPosts();
-  } else {
-    showModal("Invalid data format received or no data.");
+  } catch (error) {
+    showModal("An error occurred while fetching blog posts. Please try again.");
   }
 }
 
@@ -21,6 +26,7 @@ function renderSortedPosts() {
   const sortOrder = document.getElementById("sortOrder").value;
   let sortedPosts = [];
 
+  // Sort posts based on the selected order
   if (sortOrder === "newest") {
     sortedPosts = blogPosts.sort((a, b) => new Date(b.created) - new Date(a.created));
   } else if (sortOrder === "oldest") {
@@ -38,7 +44,7 @@ function renderSortedPosts() {
 
 function generateBlogPost(blogPostData) {
   const blogPostContainer = document.getElementById("blogPostSection");
-  blogPostContainer.textContent = "";
+  blogPostContainer.textContent = ""; // Clear existing posts
 
   blogPostData.forEach((blogPost) => {
     const blogPostCard = createBlogPostCard(blogPost);
@@ -48,7 +54,8 @@ function generateBlogPost(blogPostData) {
 
 function createBlogPostCard(blogPost) {
   const blogPostCard = document.createElement("a");
-  blogPostCard.href = `post/index.html?id=${blogPost.id}`;
+  blogPostCard.className = "blog-post-card"; // Added class for styling
+  blogPostCard.href = "#"; // Set href to # initially
 
   const staticBlogPostContainer = document.createElement("div");
   staticBlogPostContainer.className = "static-blog-post-container";
@@ -68,6 +75,7 @@ function createBlogPostCard(blogPost) {
   staticBlogPostOverlay.append(staticBlogPostTitle);
   staticBlogPostContainer.append(staticBlogPostImg, staticBlogPostOverlay);
   blogPostCard.append(staticBlogPostContainer);
+
   return blogPostCard;
 }
 
@@ -101,11 +109,12 @@ function updatePaginationControls(totalPosts) {
   paginationContainer.appendChild(pageInfo);
 }
 
+// Event listener for sort order change
 document.getElementById("sortOrder").addEventListener("change", () => {
-  currentPage = 1;
+  currentPage = 1; // Reset to the first page when sort order changes
   renderSortedPosts();
 });
 
+// Initial call to display blog posts
 displayBlogPost();
 document.addEventListener("DOMContentLoaded", initializeHeaderNav);
-

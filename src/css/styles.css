@@ -79,7 +79,57 @@ button {
   visibility: visible;
   opacity: 1;
 }
+.modal {
+  min-width: 15rem;
+  background-color: var(--primary-accent-color);
+  color: var(--primary-bg-color);
+  text-align: center;
+  border-radius: 1rem;
+  padding: 1rem;
+  position: fixed;
+  bottom: 15rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+.modal.confirmation-modal {
+  background-color: var(--secondary-accent-color);
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
+.modal-content {
+  background-color: var(--secondary-accent-color);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+.yes-button,
+.no-button {
+  margin: 0.8rem;
+  padding: 0.8rem 1.1rem;
+  font-size: 1rem;
+}
+
+.yes-button {
+  background-color: var(--primary-bg-color);
+  color: var(--secondary-accent-color);
+  border: none;
+}
+
+.no-button {
+  background-color: var(--primary-bg-color);
+  color: var(--secondary-accent-color);
+  border: none;
+}
+
+.yes-button:hover,
+.no-button:hover {
+  cursor: pointer;
+}
 @media (max-width: 1400px) {
   main {
     margin: 1rem;

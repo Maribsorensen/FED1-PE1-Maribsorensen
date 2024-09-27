@@ -1,18 +1,24 @@
 import { initializeHeaderNav } from "./shared/initializeNav.mjs";
-import { showModal } from "./shared/modal.mjs";
+import { showConfirmationModal, showModal } from "./shared/modal.mjs";
 import { deleteBlogPost } from "./shared/utils/deleteBlogPost.mjs";
 import { fetchBlogPost } from "./shared/utils/fetchBlogPost.mjs";
 
+// Fetch and display the blog post
 export async function displayBlogPost() {
-  const blogData = await fetchBlogPost();
+  try {
+    const blogData = await fetchBlogPost();
 
-  if (blogData && Array.isArray(blogData.data)) {
-    generateBlogPostList(blogData.data);
-  } else {
-    showModal("Invalid data format received or no data.");
+    if (blogData && Array.isArray(blogData.data)) {
+      generateBlogPostList(blogData.data);
+    } else {
+      showModal("Invalid data format received or no data.");
+    }
+  } catch (error) {
+    showModal("Failed to fetch blog posts. Please try again.");
   }
 }
 
+// Generate blog post list from fetched data
 function generateBlogPostList(blogPostData) {
   const blogPostList = document.getElementById("blogPostSection");
   blogPostList.textContent = "";
@@ -23,6 +29,7 @@ function generateBlogPostList(blogPostData) {
   });
 }
 
+// Create individual blog post elements
 function createBlogPostList(blogPost) {
   const blogPostUl = document.createElement("ul");
   blogPostUl.className = "manage-post-ul";
@@ -39,18 +46,24 @@ function createBlogPostList(blogPost) {
     window.location.href = `edit.html?id=${blogPost.id}`;
   });
 
+  // Delete post button
   const deletePostButton = document.createElement("button");
   deletePostButton.textContent = "Delete";
   deletePostButton.classList.add("delete-button");
 
   deletePostButton.addEventListener('click', async () => {
-    try {
-      await deleteBlogPost(blogPost.id);
-      showModal("Blog post deleted successfully.");
-      displayBlogPost(); // Refresh the list after deletion
-    } catch (error) {
-      showModal("Error deleting the blog post. Please try again.");
-    }
+    showConfirmationModal(`Are you sure you want to delete the "${blogPost.title}" post?`, async (isConfirmed) => {
+      if (isConfirmed) {
+        const isDeleted = await deleteBlogPost(blogPost.id); // Call delete function and check status
+
+        if (isDeleted) {
+          showModal("Blog post deleted successfully.");
+          displayBlogPost(); // Refresh blog post list after deletion
+        } else {
+          showModal("Error deleting the blog post. Please try again.");
+        }
+      }
+    });
   });
 
   blogPostLi.append(blogPostAnchor, deletePostButton);
@@ -58,6 +71,6 @@ function createBlogPostList(blogPost) {
   return blogPostUl;
 };
 
+// Display blog posts once DOM is loaded
 displayBlogPost();
 document.addEventListener("DOMContentLoaded", initializeHeaderNav);
-
