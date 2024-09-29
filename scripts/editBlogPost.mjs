@@ -3,11 +3,12 @@ import { fetchBlogPost } from "./shared/utils/fetchBlogPost.mjs";
 import { updateBlogPost } from "./shared/utils/updateBlogPost.mjs";
 import { showModal } from "./shared/modal.mjs";
 
+// Gets the blog post id
 function getBlogPostId() {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get("id");
 }
-
+// Event listener for getting current blog post information and calling the update function with PUT to the api to update the post
 document.addEventListener("DOMContentLoaded", async () => {
   const blogPostId = getBlogPostId();
 

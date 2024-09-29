@@ -6,7 +6,7 @@ function getBlogPostId() {
   const urlParams = new URLSearchParams(window.location.search);
   return urlParams.get("id");
 }
-
+// Fetches blog post information and checks the id
 async function fetchBlogPostInformation() {
   const blogPostId = getBlogPostId();
   if (!blogPostId) {
@@ -32,7 +32,7 @@ async function fetchBlogPostInformation() {
     return null;
   }
 }
-
+// Function for creating the html
 function createBlogPostHtml(blogPost) {
   if (!blogPost) return;
 
@@ -92,7 +92,7 @@ async function generateBlogPost() {
     document.querySelector(".blog-post-section").appendChild(blogPostElement);
   }
 }
-
+// Share function for button that uses clipboard API with the navigator.clipboard.writetext. 
 document.getElementById("shareBtn").addEventListener("click", function () {
   const currentPostUrl = window.location.href;
 

@@ -16,7 +16,7 @@ export async function displayBlogPost() {
     showModal("Invalid data format received or no data.");
   }
 }
-
+// Function regarding sorting order for static list
 function renderSortedPosts() {
   const sortOrder = document.getElementById("sortOrder").value;
   let sortedPosts = [];
@@ -45,7 +45,7 @@ function generateBlogPost(blogPostData) {
     blogPostContainer.appendChild(blogPostCard);
   });
 }
-
+// Create all the blog post cards in the static list
 function createBlogPostCard(blogPost) {
   const blogPostCard = document.createElement("a");
   blogPostCard.href = `post/index.html?id=${blogPost.id}`;
@@ -70,7 +70,7 @@ function createBlogPostCard(blogPost) {
   blogPostCard.append(staticBlogPostContainer);
   return blogPostCard;
 }
-
+// Function for buttons to only show next page because there is only 12 posts per page
 function updatePaginationControls(totalPosts) {
   const paginationContainer = document.getElementById("pagination");
   paginationContainer.textContent = "";

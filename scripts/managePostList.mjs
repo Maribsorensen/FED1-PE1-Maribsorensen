@@ -18,7 +18,7 @@ export async function displayBlogPost() {
   }
 }
 
-// Generate blog post list from fetched data
+// Generate blog post list 
 function generateBlogPostList(blogPostData) {
   const blogPostList = document.getElementById("blogPostSection");
   blogPostList.textContent = "";
@@ -29,7 +29,7 @@ function generateBlogPostList(blogPostData) {
   });
 }
 
-// Create individual blog post elements
+// Create blog post elements
 function createBlogPostList(blogPost) {
   const blogPostUl = document.createElement("ul");
   blogPostUl.className = "manage-post-ul";
@@ -54,11 +54,11 @@ function createBlogPostList(blogPost) {
   deletePostButton.addEventListener('click', async () => {
     showConfirmationModal(`Are you sure you want to delete the "${blogPost.title}" post?`, async (isConfirmed) => {
       if (isConfirmed) {
-        const isDeleted = await deleteBlogPost(blogPost.id); // Call delete function and check status
+        const isDeleted = await deleteBlogPost(blogPost.id);
 
         if (isDeleted) {
           showModal("Blog post deleted successfully.");
-          displayBlogPost(); // Refresh blog post list after deletion
+          displayBlogPost();
         } else {
           showModal("Error deleting the blog post. Please try again.");
         }
@@ -71,6 +71,5 @@ function createBlogPostList(blogPost) {
   return blogPostUl;
 };
 
-// Display blog posts once DOM is loaded
 displayBlogPost();
 document.addEventListener("DOMContentLoaded", initializeHeaderNav);

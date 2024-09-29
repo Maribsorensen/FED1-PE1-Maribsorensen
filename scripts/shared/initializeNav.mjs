@@ -1,6 +1,6 @@
 import { ABSOLUTE_URL_PATH } from "./constants.mjs";
 
-
+// Functions for changing the header elements based on if you are logged in or not.
 function createNavItem(text, href = "#", id = "") {
   const listItem = document.createElement("li");
   const anchorTag = document.createElement("a");

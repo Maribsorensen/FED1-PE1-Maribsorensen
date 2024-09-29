@@ -2,6 +2,7 @@ import { BLOG_ENDPOINT } from "./shared/constants.mjs";
 import { initializeHeaderNav } from "./shared/initializeNav.mjs";
 import { showModal } from "./shared/modal.mjs";
 
+// Post request for creating a new blog post
 document.getElementById("blogPostForm").addEventListener("submit", async function (event) {
   event.preventDefault();
 
@@ -29,7 +30,7 @@ document.getElementById("blogPostForm").addEventListener("submit", async functio
       },
       body: JSON.stringify(postBlogData),
     });
-
+    // Shows a modal if with the result
     if (response.ok) {
       const result = await response.json();
       showModal('Blog post created successfully! Redirecting...');

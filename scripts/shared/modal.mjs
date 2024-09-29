@@ -25,21 +25,18 @@ export function showConfirmationModal(message, onConfirm) {
   noButton.textContent = "No";
   noButton.className = "no-button";
 
-  // Append buttons to modal content
   modalContent.appendChild(yesButton);
   modalContent.appendChild(noButton);
   modal.appendChild(modalContent);
   document.body.appendChild(modal);
 
-  // Handle Yes click
   yesButton.addEventListener("click", () => {
     modal.remove();
-    onConfirm(true); // Confirm action
+    onConfirm(true);
   });
 
-  // Handle No click
   noButton.addEventListener("click", () => {
     modal.remove();
-    onConfirm(false); // Cancel action
+    onConfirm(false);
   });
 }
