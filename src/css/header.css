@@ -61,12 +61,12 @@ header {
 .username-menu:hover {
   color: var(--primary-accent-color);
 }
-
-@media (max-width: 620px) {
+@media (max-width: 730px) {
   .header-logo {
     font-size: 1.5rem;
   }
-
+}
+@media (max-width: 620px) {
   header {
     padding: 0.5rem;
     nav ul {
